@@ -13,12 +13,13 @@ namespace ProductApps
         private decimal totalPayment;
         private decimal delivery;
         private decimal wrapping;
-        private decimal gst;
+        private decimal gst = 1.1m;
         private decimal totalcharge;
         const decimal deleveryFee = 25m;
         const decimal wrapingFee = 5m;
         private decimal totalchargeAW;
-
+        private decimal totalchargeAGST;
+        
         private decimal Price
         {
             get { return price; }
@@ -69,6 +70,12 @@ namespace ProductApps
             set { totalchargeAW = value; }
         }
 
+        public decimal TotalChargeAGST
+        {
+            get { return totalchargeAGST; }
+            set { totalchargeAGST = value; }
+        }
+
         //Constructor for Product
         public Product(decimal price, int quantity)
         {
@@ -90,6 +97,12 @@ namespace ProductApps
         public void caltotalChargeAW()
         {
             totalchargeAW = TotalCharge + wrapingFee;
+        }
+
+        public void caltotalChargeAGST()
+        {
+             
+            totalchargeAGST = TotalChargeAW * gst;
         }
 
     }
